@@ -1,0 +1,43 @@
+table {
+  background-color: aliceblue;
+  height: 50vh;
+  width: 50vw;
+}
+td {
+  border: 2px solid black;
+}
+td:hover {
+  cursor: pointer;
+  border: 2px solid red;
+}
+.mole {
+  background-image: url("./images/images.jpeg");
+  background-size: cover;
+}
+main {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.heading {
+  /* align-self: center; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+input:hover {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
