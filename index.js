@@ -32,7 +32,7 @@ function startApp(e) {
     if (oldCellNo != -1 && oldCellNo != cellNo)
       cells[oldCellNo].classList.remove("mole");
     oldCellNo = cellNo;
-  }, 1000);
+  }, 2000);
 
   timeTimer = setInterval(updateTimer, 1000);
 }
