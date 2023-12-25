@@ -29,7 +29,7 @@ function startApp(e) {
     cells[cellNo].classList.add("mole");
     if (oldCellNo != -1) cells[oldCellNo].classList.remove("mole");
     oldCellNo = cellNo;
-  }, 2000);
+  }, 1000);
 
   timeTimer = setInterval(updateTimer, 1000);
 }
