@@ -4,6 +4,7 @@ let oldCellNo = -1;
 let timeLeftEl = document.querySelector(".time-left span");
 let startBtn = document.querySelector(".start-btn");
 let stopBtn = document.querySelector(".stop-btn");
+let pauseBtn = document.querySelector(".pause-btn");
 let pointsEl = document.querySelector(".points span");
 
 let baseTable = document.querySelector(".base-table");
@@ -23,11 +24,13 @@ function removeMole() {
   if (oldCellNo != -1) cells[oldCellNo].classList.remove("mole");
 }
 function startApp(e) {
+  startBtn.value = "Start";
   moleTimer = setInterval(() => {
     let cellNo = Math.floor(Math.random() * 16);
     console.log(cellNo, cells.length);
     cells[cellNo].classList.add("mole");
-    if (oldCellNo != -1) cells[oldCellNo].classList.remove("mole");
+    if (oldCellNo != -1 && oldCellNo != cellNo)
+      cells[oldCellNo].classList.remove("mole");
     oldCellNo = cellNo;
   }, 1000);
 
@@ -54,12 +57,22 @@ function updatePoints() {
 
 function cellClicked(e) {
   let cell = e.target;
-  if (cell.classList.contains("mole")) {
+  if (cell.classList.contains("mole") && startBtn.value != "Restart") {
     points++;
     updatePoints();
   }
 }
 
+function pauseApp() {
+  if (moleTimer && timeTimer) {
+    clearInterval(moleTimer);
+    clearInterval(timeTimer);
+    updatePoints();
+    startBtn.value = "Restart";
+  }
+}
+
 startBtn.addEventListener("click", startApp);
 stopBtn.addEventListener("click", stopApp);
+pauseBtn.addEventListener("click", pauseApp);
 baseTable.addEventListener("click", cellClicked);
